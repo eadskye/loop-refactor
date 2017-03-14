@@ -33,48 +33,38 @@ module.exports = {
 
   someObjsContainProp: (arr, prop) => {
     return arr.some((array)=>{
-      return array.property(prop);
-    });
+    if(array.hasOwnProperty(prop))
+    return true;
+  });
   },
 
 
   convertNameArrayToObject: (arr) => {
-    // let nameObj = [];
-    // for(var i = 0; i < arr.length; i++){
-    //   let obj = {};
-    //   obj.first = arr[i][0];
-    //   obj.last = arr[i][1];
-    //   nameObj.push(obj);
-    // }
-    // return nameObj;
 
-    return arr.map(nameObj => {
-      return nameObj.first[0], nameObj.last[1]
+
+    return arr.map(obj => {
+        let nameObj= {};
+       nameObj.first = obj[0];
+       nameObj.last = obj[1];
+       return nameObj;
     });
-
   },
 
+
+
+
+
+
   objContainsProp: (arr, prop) => {
-    // for (var i = 0; i < arr.length; i++){
-    //   if(!arr[i].hasOwnProperty(prop)){
-    //     return false;
-    //   }
-    // }
-    // return true;
-    return arr.every(i => {
-      return i.property(prop);
+
+    return arr.every((array)=>{
+    if(array.hasOwnProperty(prop))
+    return true;
     });
   },
 
   stringMatch: (arr, str) => {
-  //   let matches = [];
-  //   for(var i = 0; i < arr.length; i++){
-  //     if (arr[i].includes(str)){
-  //       matches.push(arr[i]);
-  //     }
-  //   }
-  //   return matches;
-  // },
+  
 return arr.filter(i => {
   return (i.match(str));
 });
